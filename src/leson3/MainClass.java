@@ -8,8 +8,9 @@ public class MainClass {
         System.out.println(Arrays.toString(fillArr()));
         System.out.println(Arrays.toString(multiplyArr()));
         diagonalArr();
-        size(6);
+        size(6, 6);
         minMaxArr();
+        diagonal();
     }
 
     public static int[] array() {
@@ -27,10 +28,9 @@ public class MainClass {
 
     public static int[] fillArr() {
         int[] fillArr = new int[100];
-        int k = 1;
 
         for (int i = 0; i < fillArr.length; i++) {
-            fillArr[i] = k++;
+            fillArr[i] = i + 1;
         }
         return fillArr;
     }
@@ -47,11 +47,51 @@ public class MainClass {
 
     public static void diagonalArr() {
         int[][] array = new int[3][3];
-        array[0][0] = 1;
-        array[0][2] = 1;
-        array[1][1] = 1;
-        array[2][0] = 1;
-        array[2][2] = 1;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (i == j || i + j == array.length - 1) {
+                    array[i][j] = 1;
+                }
+                System.out.print(array[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[] size(int len, int initialValue) {
+        int[] arr = new int[len];
+
+        for (int i = 0; i < len; i++) {
+            System.out.print(arr[i] + initialValue);
+        }
+        System.out.println();
+        return arr;
+    }
+
+    public static void minMaxArr() {
+        int[] maxValue = {8, 2, 6, 3, 9, 4, 2, 8, 1, 3, 6, 5};
+        int max = maxValue[0];
+        int min = maxValue[0];
+
+        for (int i = 0; i < maxValue.length; i++) {
+            if (maxValue[i] > max) {
+                max = maxValue[i];
+            } else if (maxValue[i] < min) {
+                min = maxValue[i];
+            }
+        }
+        System.out.println("min" + "\t" + min + " " + "max" + "\t" + max);
+    }
+
+
+    public static void diagonal() {
+        int[][] array = new int[11][11];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i][i] = 1;
+            array[i][array.length - 1 - i] = 1;
+        }
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -61,28 +101,8 @@ public class MainClass {
         }
         System.out.println("========================================");
     }
-
-    public static int[] size(int len) {
-        int[] arr = new int[len];
-        int initialValue = 5;
-
-        for (int i = 0; i < len; i++) {
-            System.out.print(arr[i] + initialValue);
-        }
-        System.out.println();
-        return arr;
-    }
-
-    // Увы не вышло)
-    public static void minMaxArr() {
-        int[] maxValue = {8, 2, 6, 3, 9, 4, 2, 8, 1, 3, 6, 5};
-        for (int i = 0; i < maxValue.length; i++) {
-            if (maxValue[i] >= i) {
-                System.out.println(i);
-            }
-        }
-
-    }
-
-
 }
+
+
+
+
