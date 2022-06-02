@@ -11,13 +11,14 @@ public class MainClass {
     public static void main(String[] args) {
         guessNumber();
         gameArr();
+
     }
 
     public static void guessNumber() {
-        int number = rand.nextInt(10);
         int count = 1;
         int repid;
         do {
+            int number = rand.nextInt(10);
             for (int i = 0; i < 3; i++) {
                 int guess = sc.nextInt();
                 if (guess > number) {
