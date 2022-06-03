@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     static final int SIZE = 3;
+    static final int DOTS_TO_WIN = 3;
 
     static final char DOT_X = 'X';
     static final char DOT_O = 'O';
@@ -90,17 +91,27 @@ public class Main {
     }
 
     public static void aiTurn() {
-        int x, y;
-        do {
-//            for (int i = 0; i < SIZE; i++) {
-//                if (map[i][map.length - 3] == DOT_X && map[i][map.length - 2] == DOT_X) {
-//                    x = map[i + 1];
-//                    y = map.length;
-//                }
-//            }
-            y = rand.nextInt(SIZE);
-            x = rand.nextInt(SIZE);
-        } while (!isCellValid(x, y));
+        int x = -1, y = -1;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (isCellValid(i, j)) {
+                    map[i][j] = DOT_X;
+                    if (checkWin(DOT_X)) {
+                        x = j;
+                        y = i;
+                    }
+                    map[i][j] = DOT_EMPTY;
+                }
+            }
+        }
+
+        if (x == -1 && y == -1) {
+            do {
+                x = rand.nextInt(SIZE);
+                y = rand.nextInt(SIZE);
+            } while (!isCellValid(x, y));
+        }
+
         map[y][x] = DOT_O;
     }
 
@@ -117,16 +128,66 @@ public class Main {
 
     public static boolean checkWin(char s) {
         for (int i = 0; i < SIZE; i++) {
-            if (map[i][map.length - 3] == s && map[i][map.length - 2] == s && map[i][map.length - 1] == s)
-                return true;
-            if (map[map.length - 3][i] == s && map[map.length - 2][i] == s && map[map.length - 1][i] == s)
-                return true;
-            if (map[map.length - 3][map.length - 3] == s && map[map.length - 2][map.length - 2] == s && map[map.length - 1][map.length - 1] == s)
-                return true;
-            if (map[map.length - 1][map.length - 3] == s && map[map.length - 2][map.length - 2] == s && map[map.length - 3][map.length - 1] == s)
-                return true;
+            for (int j = 0; j < SIZE; j++) {
+                if (gorizontal(i, j, s) || vertical(i, j, s) || diogonal1(i, j, s) || diogonal2(i, j, s))
+                    return true;
+            }
         }
         return false;
+    }
+
+    public static boolean gorizontal(int x, int y, char symbol) {
+        if (x < 0 || y < 0 || x + DOTS_TO_WIN > SIZE || y >= SIZE) {
+            return false;
+        }
+        int k = 0;
+        for (int i = 0; i < DOTS_TO_WIN; i++) {
+            if (map[i + x][y] == symbol) {
+                k++;
+            }
+        }
+        return k == DOTS_TO_WIN;
+    }
+
+    public static boolean vertical(int x, int y, char symbol) {
+        if (x < 0 || y < 0 || y + DOTS_TO_WIN > SIZE || x >= SIZE) {
+            return false;
+        }
+        int k = 0;
+        for (int i = 0; i < DOTS_TO_WIN; i++) {
+            if (map[x][y + i] == symbol) {
+                k++;
+            }
+        }
+        return k == DOTS_TO_WIN;
+    }
+
+    public static boolean diogonal1(int x, int y, char symbol) {
+        if (x < 0 || y < 0 || x + DOTS_TO_WIN > SIZE || y + DOTS_TO_WIN > SIZE) {
+            return false;
+        }
+        int k = 0;
+        for (int i = 0; i < DOTS_TO_WIN; i++) {
+            if (map[x + i][y + i] == symbol) {
+                k++;
+            }
+        }
+
+        return k == DOTS_TO_WIN;
+    }
+
+    public static boolean diogonal2(int x, int y, char symbol) {
+        if (x < 0 || y < 0 || x + DOTS_TO_WIN > SIZE || y + 1 - DOTS_TO_WIN < 0) {
+            return false;
+        }
+        int k = 0;
+        for (int i = 0; i < DOTS_TO_WIN; i++) {
+            if (map[x + i][y - i] == symbol) {
+                k++;
+            }
+        }
+
+        return k == DOTS_TO_WIN;
     }
 
 }
