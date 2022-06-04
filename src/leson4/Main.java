@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static final int SIZE = 3;
-    static final int DOTS_TO_WIN = 3;
+    static final int SIZE = 5;
+    static final int DOTS_TO_WIN = 4;
 
     static final char DOT_X = 'X';
     static final char DOT_O = 'O';
@@ -79,11 +79,11 @@ public class Main {
             System.out.println("Введите координат X Y");
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
-        } while (!isCellValid(x, y));
+        } while (!isCellValid(y, x));
         map[y][x] = DOT_X;
     }
 
-    public static boolean isCellValid(int x, int y) {
+    public static boolean isCellValid(int y, int x) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
             return false;
         }
@@ -92,6 +92,7 @@ public class Main {
 
     public static void aiTurn() {
         int x = -1, y = -1;
+
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (isCellValid(i, j)) {
@@ -104,15 +105,14 @@ public class Main {
                 }
             }
         }
-
-        if (x == -1 && y == -1) {
-            do {
+        if (x == -1 && y == -1){
+            do{
                 x = rand.nextInt(SIZE);
                 y = rand.nextInt(SIZE);
-            } while (!isCellValid(x, y));
+            }while (!isCellValid(y,x));
         }
-
         map[y][x] = DOT_O;
+
     }
 
     public static boolean isFull() {
@@ -172,7 +172,6 @@ public class Main {
                 k++;
             }
         }
-
         return k == DOTS_TO_WIN;
     }
 
@@ -186,7 +185,6 @@ public class Main {
                 k++;
             }
         }
-
         return k == DOTS_TO_WIN;
     }
 
