@@ -3,21 +3,24 @@ package lesson6;
 import java.util.Random;
 
 public class Animals {
-    private int maxRun;
-    private int maxJamp;
-    private int maxSwim;
+    public int maxRun;
+    public int maxJamp;
+    public int maxSwim;
+    Random rand = new Random();
 
-    public Animals(int maxRun, int maxJamp, int maxSwim) {
-        this.maxRun = maxRun;
-        this.maxJamp = maxJamp;
-        this.maxSwim = maxSwim;
+    public Animals() {
+        this.maxRun = rand.nextInt(300)+100;
+        this.maxJamp = rand.nextInt(2)+1;
+        this.maxSwim = rand.nextInt(9)+1;
     }
+
+
 
     public void run(int n) {
         System.out.println("пробежал " + n + " м");
     }
 
-    public void jamp(double n) {
+    public void jamp(int n) {
         System.out.println("прыгнул " + n + " м");
     }
 
@@ -27,19 +30,5 @@ public class Animals {
 
 
 
-    public void setMaxRun(int maxRun) {
-        this.maxRun = maxRun;
-    }
 
-
-
-    public void setMaxJamp(int maxJamp) {
-        this.maxJamp = maxJamp;
-    }
-
-
-
-    public void setMaxSwim(int maxSwim) {
-        this.maxSwim = maxSwim;
-    }
 }

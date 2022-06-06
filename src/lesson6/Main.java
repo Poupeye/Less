@@ -5,15 +5,17 @@ import java.util.concurrent.Callable;
 public class Main {
     public static void main(String[] args) {
 
-        Dog dog = new Dog(400,1,10);
-        Cat cat = new Cat(150,1,2);
+        Dog dog = new Dog();
+        Dog dog1 = new Dog();
+        Cat cat = new Cat();
 
-        dog.run(170);
-        dog.jamp(0.3);
-        dog.swim(8);
+        dog.run(215);
+        dog.jamp(1);
+        dog.swim(1);
+        dog1.run(150);
 
-        cat.jamp(2);
-        cat.run(149);
+        cat.jamp(1);
+        cat.run(100);
         cat.swim(2);
     }
 }
