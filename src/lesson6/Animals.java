@@ -3,32 +3,53 @@ package lesson6;
 import java.util.Random;
 
 public class Animals {
-    public int maxRun;
-    public int maxJamp;
-    public int maxSwim;
-    Random rand = new Random();
+    private int maxRun;
+    private int maxJamp;
+    private int maxSwim;
+    private String name;
+
+
+    public Animals(String name, int maxRun, int maxJamp, int maxSwim) {
+        this.maxRun = maxRun;
+        this.maxJamp = maxJamp;
+        this.maxSwim = maxSwim;
+        this.name = name;
+        System.out.println(name + " " + maxRun + " " + maxJamp + " " + maxSwim);
+    }
 
     public Animals() {
-        this.maxRun = rand.nextInt(300)+100;
-        this.maxJamp = rand.nextInt(2)+1;
-        this.maxSwim = rand.nextInt(9)+1;
     }
-
-
 
     public void run(int n) {
-        System.out.println("пробежал " + n + " м");
+        if (n <= this.maxRun) {
+            System.out.println(name + "  run: true");
+        } else System.out.println(name + " False");
     }
 
+
     public void jamp(int n) {
-        System.out.println("прыгнул " + n + " м");
+        if (n <= this.maxJamp) {
+            System.out.println(name + " jamp: true");
+        } else System.out.println(name + " False");
     }
 
     public void swim(int n) {
-        System.out.println("проплыл " + n + " м");
+        if (n <= this.maxSwim) {
+            System.out.println(name + " swim: true");
+        } else System.out.println(name + " False");
+
+    }
+
+    public void setMaxRun(int maxRun) {
+        this.maxRun = maxRun;
+    }
+
+    public void setMaxJamp(int maxJamp) {
+        this.maxJamp = maxJamp;
     }
 
 
-
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }
