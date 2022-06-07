@@ -1,15 +1,13 @@
 package lesson6;
 
-import java.util.Random;
-
-public class Animals {
+public class Animal {
     private int maxRun;
     private int maxJamp;
     private int maxSwim;
     private String name;
 
 
-    public Animals(String name, int maxRun, int maxJamp, int maxSwim) {
+    public Animal(String name, int maxRun, int maxJamp, int maxSwim) {
         this.maxRun = maxRun;
         this.maxJamp = maxJamp;
         this.maxSwim = maxSwim;
@@ -17,8 +15,6 @@ public class Animals {
         System.out.println(name + " " + maxRun + " " + maxJamp + " " + maxSwim);
     }
 
-    public Animals() {
-    }
 
     public void run(int n) {
         if (n <= this.maxRun) {
@@ -40,16 +36,4 @@ public class Animals {
 
     }
 
-    public void setMaxRun(int maxRun) {
-        this.maxRun = maxRun;
-    }
-
-    public void setMaxJamp(int maxJamp) {
-        this.maxJamp = maxJamp;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
