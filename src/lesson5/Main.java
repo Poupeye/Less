@@ -14,7 +14,7 @@ public class Main {
                 new Person("Довалова Олеся Батьковна", "Секритарь", "dayu@mail.ru", 969696963, 300000, 22),
                 new Person("Стрижов Виталий Игоревич", "Завхоз", "drusch@mail.ru", 99783423, 45000, 41)};
         for (Person p : personal) {
-            if (p.age > 40) {
+            if (p.getAge() > 40) {
                 p.info();
             }
         }
