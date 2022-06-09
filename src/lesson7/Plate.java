@@ -18,7 +18,6 @@ public class Plate {
         } else if (food < n){
             System.out.println("в торелке мало еды");
         }
-
     }
 
     public int getFood() {
