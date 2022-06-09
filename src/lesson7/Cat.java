@@ -16,9 +16,10 @@ public class Cat {
     }
 
     public void eat(Plate plate) {
-        plate.decreaseFood(appetite);
         if (plate.getFood() < appetite) {
             this.satiety = false;
         } else satiety = true;
+
+        plate.decreaseFood(appetite);
     }
 }
