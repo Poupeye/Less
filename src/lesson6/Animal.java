@@ -1,6 +1,6 @@
 package lesson6;
 
-public class Animal {
+public abstract class  Animal {
     private int maxRun;
     private int maxJamp;
     private int maxSwim;

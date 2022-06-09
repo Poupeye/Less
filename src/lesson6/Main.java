@@ -9,7 +9,8 @@ public class Main {
         Dog dog2 = new Dog( "vasya", rand.nextInt(400)+100, rand.nextInt(1)+1, rand.nextInt(8)+2 );
         Dog dog = new Dog("barbos",500,1,8);
         Dog dog1 = new Dog("lord",600,2,12);
-        Cat cat = new Cat("pusy",250,2,0);
+        Cat cat = new Cat("pusy",250,2);
+
 
         dog.run(600);
         dog.jamp(1);
@@ -20,6 +21,6 @@ public class Main {
 
         cat.jamp(2);
         cat.run(150);
-        cat.swim(2);
+        cat.swim(0);
     }
 }
